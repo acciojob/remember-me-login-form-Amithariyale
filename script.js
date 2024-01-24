@@ -14,14 +14,9 @@ form.addEventListener("submit",(e)=>{
 
 	// console.log()
 	if(prevUserData && prevUserData.find((item)=>item.username===user.username && item.password===user.password) ){
-		const btn=document.createElement('input');
-		btn.type="button";
-		btn.id="existing";
-		btn.value="Login as existing user";
-		btn.addEventListener("click",()=>{
-			alert(`Logged in as ${user.username}`);
-		});
-		form.appendChild(btn);
+		const btn=document.getElementById('existing');
+		btn.style.display='flex';
+		btn.addEventListener('click',()=>login(user));
 	}
 	else{
 		if(e.target.checkbox.checked){
@@ -36,6 +31,7 @@ form.addEventListener("submit",(e)=>{
 
 function login(user) {
 	alert(`Logged in as ${user.username}`);
+	form.reset();
 }
 
 
