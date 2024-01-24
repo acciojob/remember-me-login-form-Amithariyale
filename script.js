@@ -10,7 +10,7 @@ form.addEventListener("submit",(e)=>{
 		username:e.target.username.value,
 		password:e.target.password.value,
 	}
-	const prevUserData=JSON.parse(localStorage.getItem("userData"));
+	const prevUserData=JSON.parse(localStorage.getItem("userData") ?? "null");
 
 	// console.log()
 	if(prevUserData && prevUserData.find((item)=>item.username===user.username && item.password===user.password) ){
@@ -18,7 +18,9 @@ form.addEventListener("submit",(e)=>{
 		btn.type="button";
 		btn.id="existing";
 		btn.value="Login as existing user";
-		btn.addEventListener("click",login(user));
+		btn.addEventListener("click",()=>{
+			alert(`Logged in as ${user.username}`);
+		});
 		form.appendChild(btn);
 	}
 	else{
